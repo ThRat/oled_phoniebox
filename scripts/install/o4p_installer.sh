@@ -3,7 +3,7 @@
 
 #Version: 1.9.3 - 20200313
 #branch="development"
-repo="https://github.com/splitti/oled_phoniebox"
+repo="https://github.com/ThRat/oled_phoniebox"
 branch="master"
 
 nocolor='\e[0m'
@@ -32,7 +32,7 @@ echo -e "///${cyan}   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ 
 echo -e "///${cyan}                                                                                                          ${nocolor}///";
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e "///                                                                                                          ///"
-echo -e "///${cyan}                               https://github.com/splitti/oled_phoniebox                                  ${nocolor}///"
+echo -e "///${cyan}                               https://github.com/ThRat/oled_phoniebox                                  ${nocolor}///"
 echo -e "///                                                                                                          ///"
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e ""

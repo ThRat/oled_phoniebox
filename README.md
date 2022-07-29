@@ -5,23 +5,11 @@ Version: 1.9.3 - 20200313
 oled_phoniebox
 Based on https://github.com/rm-hull/luma.oled
 
-Tested with this display (affiliate Link): <a href="https://amzn.to/2SjPFPt" target="_blank">https://amzn.to/2SjPFPt</a>
+Tested with this display (affiliate Link): <a href="https://www.amazon.de/gp/product/B078J78R45/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=splittitde-21&linkId=52f29b26591306b53816fc80fc11fe12&language=de_DE" target="_blank">https://www.amazon.de/gp/product/B078J78R45/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=splittitde-21&linkId=52f29b26591306b53816fc80fc11fe12&language=de_DE</a>
 
 | Start Screen | Play View Full | Play View Lite | Info Screen | Pause Screen | Play Screen | Vol Down Screen | Vol Up Screen |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![Caption](preview/Start_Screen.jpg "Caption") | ![Caption](preview/Play_View-full.jpg "Caption") | ![Caption](preview/Play_View-lite.jpg "Caption") | ![Caption](preview/Info_Screen.jpg "Caption") | ![Caption](preview/Pause_Screen.jpg "Caption") | ![Caption](preview/Play_Screen.jpg "Caption") | ![Caption](preview/VolumeDown_Screen.jpg "Caption") | ![Caption](preview/VolumeUp_Screen.jpg "Caption") |
-
-My finished Box on Youtube: <a href="https://youtu.be/GpHAbM0JIt4" target="_blank">Die drei ??? Kids Phoniebox</a>
-Youtube Information Video: <a href="https://youtu.be/bEJN0BWdAXY" target="_blank">German Youtube Video</a>
-Forum: <a href="https://forum-raspberrypi.de/forum/thread/41465-oled-display-fuer-die-phoniebox/" target="_blank">German Forum</a>
-
-My Phoniebox Project (german only): <a href="https://splittscheid.de/selfmade-phoniebox/" target="_blank">My Selfmade Phoniebox</a>
-
-## Installation Steps
-
-### Deactivate Buttons
-It is possible, that the Display uses the same GPIO like the Shut-Command of the jukebox4kids. In this case, you should edit the file gpio-buttons.py like this
-> sed -i -e "s:shut = Button(3, hold_time=2):#shut = Button(3, hold_time=2):g" ~/RPi-Jukebox-RFID/scripts/gpio-buttons.py
 
 ### Service Installation
 Please notice:
@@ -39,7 +27,7 @@ Add a Button press and start these commands:
 ### Just another Feature
 Press Prev- and Next-Button together for two or more seconds, and you get some Information about your WiFi and the installed oled_phoniebox-Version. If you press the buttons again, you can change the Display-Mode.
 
-## Spend me a coffee
+## Spend meoriginal author a coffee
 <a href="http://paypal.me/splittscheid" target="_blank">paypal.me</a>
 
 ## FAQ
