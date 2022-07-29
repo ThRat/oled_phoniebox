@@ -1,5 +1,5 @@
-Date: 13.03.2020
-Version: 1.9.3 - 20200313
+Date: 06.02.2022
+Version: 2.0.3 - 20220206
 
 # oled_phoniebox
 oled_phoniebox
@@ -7,9 +7,9 @@ Based on https://github.com/rm-hull/luma.oled
 
 Tested with this display (affiliate Link): <a href="https://www.amazon.de/gp/product/B078J78R45/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=splittitde-21&linkId=52f29b26591306b53816fc80fc11fe12&language=de_DE" target="_blank">https://www.amazon.de/gp/product/B078J78R45/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=splittitde-21&linkId=52f29b26591306b53816fc80fc11fe12&language=de_DE</a>
 
-| Start Screen | Play View Full | Play View Lite | Info Screen | Pause Screen | Play Screen | Vol Down Screen | Vol Up Screen |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| ![Caption](preview/Start_Screen.jpg "Caption") | ![Caption](preview/Play_View-full.jpg "Caption") | ![Caption](preview/Play_View-lite.jpg "Caption") | ![Caption](preview/Info_Screen.jpg "Caption") | ![Caption](preview/Pause_Screen.jpg "Caption") | ![Caption](preview/Play_Screen.jpg "Caption") | ![Caption](preview/VolumeDown_Screen.jpg "Caption") | ![Caption](preview/VolumeUp_Screen.jpg "Caption") |
+| Start Screen | Play View Full | Play View Mixed | Play View Lite | Info Screen | Pause Screen | Play Screen | Vol Down Screen | Vol Up Screen |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ![Caption](preview/Start_Screen.jpg "Caption") | ![Caption](preview/Play_View-full.jpg "Caption") | ![Caption](preview/Play_View-mixed.jpg "Caption") | ![Caption](preview/Play_View-lite.jpg "Caption") | ![Caption](preview/Info_Screen.jpg "Caption") | ![Caption](preview/Pause_Screen.jpg "Caption") | ![Caption](preview/Play_Screen.jpg "Caption") | ![Caption](preview/VolumeDown_Screen.jpg "Caption") | ![Caption](preview/VolumeUp_Screen.jpg "Caption") |
 
 ### Service Installation
 Please notice:
@@ -62,6 +62,19 @@ Font:
 - https://www.dafont.com/wifi.font
 
 ## Changelog
+- 06.02.2022 - 2.0.3 - 20220206
+  - Bugfix:
+    - https://github.com/splitti/oled_phoniebox/issues/9#issue-1125147086 fixed
+- 13.03.2022 - 2.0.2 - 20220113
+  - Bugfix:
+    - Remove unneeded package
+- 14.03.2021 - 2.0.1 - 20210314
+  - Update:
+    - Update buttons for new pinout (https://splittscheid.de/pinout-phoniebox-gpio-belegung/).
+- 14.03.2021 - 2.0.0 - 20210314
+  - Update compatibility to the new phoniebox-version.
+  - Bugfix:
+      - Add sleep to the pause button.
 - 13.03.2020 - 1.9.3 - 20200313
   - Feature:
     - Check for Sync State and showing the process

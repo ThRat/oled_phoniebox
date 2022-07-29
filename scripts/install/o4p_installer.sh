@@ -1,7 +1,7 @@
 #!/bin/bash
 # Colors: \e[36m=Cyan M ; \e[92m=Light green ; \e[91m=Light red ; \e[93m=Light yellow ; \e[31m=green ; \e[0m=Default ; \e[33m=Yellow ; \e[31m=Red
 
-#Version: 1.9.3 - 20200313
+#Version: 2.0.3 - 20220206
 #branch="development"
 repo="https://github.com/ThRat/oled_phoniebox"
 branch="master"
@@ -218,7 +218,7 @@ echo -e ""
 echo -e "Install packages..."
 
 lineLen=24
-packages=(git python3 build-essential python3-dev python3-pip python-pil libjpeg-dev i2c-tools) # python3-smbus i2c-tools  libfreetype6-dev   python3-pygame libtiff5)
+packages=(git python3 build-essential python3-dev python3-pip libjpeg-dev i2c-tools) # python3-smbus i2c-tools  libfreetype6-dev   python3-pygame libtiff5)
 for p in ${packages[@]}; do
 	i=0
 	echo -n -e "   --> $p:"
@@ -285,6 +285,7 @@ fi
 if grep -q '^dtparam=i2c1=on' /boot/config.txt; then
   echo -e "   --> i2c1 boot-parameter:     ${green}already set${nocolor}"
 else
+  echo '' | sudo tee -a /boot/config.txt > /dev/null 2>&1
   echo 'dtparam=i2c1=on' | sudo tee -a /boot/config.txt > /dev/null 2>&1
   echo -e "   --> i2c1 boot-parameter:     ${green}set${nocolor}"
 fi
@@ -375,30 +376,26 @@ echo -e ""
 read -n 1 -s -r -p "Press any key to continue"
 clear
 echo -e "////////////////////////////////////////////////////////////////////"
-echo -e "///${cyan}   Edit gpio-buttons.py                                       ${nocolor}///"
+echo -e "///${cyan}   GPIO Buttons Control                                       ${nocolor}///"
 echo -e "////////////////////////////////////////////////////////////////////"
 echo -e ""
-echo -e "If jukebox4kids is already installed, you can choose your new config"
-echo -e "for the file:"
-echo -e "  ${yellow}/home/pi/RPi-Jukebox-RFID/scripts/gpio-buttons.py${nocolor}"
+echo -e "If jukebox4kids should be installed already! You have to choose"
+echo -e "between the new GPIO Button Settings in the Phoniebox Repository"
+echo -e "or the old one with enhanced display control features like:"
 echo -e ""
-echo -e "${cyan}Option 1:${nocolor} DOES NOT WORK AFTER PHONIEBOX UPDATE 2.2"
-echo -e "Just deactivate GPIO Pin 3 for the shutdown. This Pin is needed and"
-echo -e "used for I2C-Display! The origin gpio-buttons.py-File from the"
-echo -e "RPi-Jukebox-RFID-Repository will be changed!!!"
+echo -e "  ${yellow}---> Brightness control${nocolor}"
+echo -e "  ${yellow}---> Status Screen${nocolor}"
+echo -e "  ${yellow}---> OLED mode control${nocolor}"
 echo -e ""
-echo -e "${cyan}Option 2:${nocolor} DOES NOT WORK AFTER PHONIEBOX UPDATE 2.2"
-echo -e "Replace the gpio-buttons.py-Service with a file from this "
-echo -e "Repository for contrast-control with the prev- and next-Buttons."
-echo -e "The origin Repository remains untouched."
+echo -e "${cyan}Option 1:${nocolor} RECOMMEND"
+echo -e "Install a new Button control service for the Phoniebox & display."
+echo -e "The origin Repository remains untouched, the service will be"
+echo -e "just disabled!"
 echo -e ""
-echo -e "${cyan}Option 3:${nocolor}"
-echo -e "Just skip... ${red}Needed, if jukebox4kids is not installed!!!${nocolor}"
+echo -e "${cyan}Option 2:${nocolor}"
+echo -e "Just skip... Phoniebox will work well without display control!"
 echo -e " "
-echo -e "I recommend option 2 or 3, because editing the origin service could"
-echo -e "make problems!"
-echo -e " "
-options=("Option 2: Replace service for contrast-control" "Option 3: Skip")
+options=("Option 1: Replace service for disyplay control" "Option 2: Skip")
 
 select opt in "${options[@]}"
 do
@@ -412,12 +409,13 @@ do
 			echo -e ""
             break
             ;;
-        "Option 2: Replace service for contrast-control")
+        "Option 1: Replace service for disyplay control")
 			echo -e " "
 			echo -e -n "   --> Delete old Service:                "
 			#sudo chmod +x ${installPath}/scripts/gpio-buttons/gpio-buttons.py > /dev/null
 			sudo service phoniebox-gpio-buttons stop > /dev/null 2>&1
 			sudo systemctl disable phoniebox-gpio-buttons > /dev/null  2>&1
+			sudo systemctl disable phoniebox-gpio-control.service > /dev/null  2>&1
 			sudo rm /etc/systemd/system/phoniebox-gpio-buttons.service > /dev/null  2>&1
 			echo -e "${green}Done${nocolor}"
 			echo -e -n "   --> Installing Service:                "
@@ -429,9 +427,13 @@ do
 			sudo service phoniebox-gpio-buttons start > /dev/null 2>&1
 			echo -e "${green}Done${nocolor}"
 			echo -e ""
+			echo -e "${yellow}Please edit the button configuration to match your${nocolor}"
+			echo -e "${yellow}hardware! Config file:${nocolor}"
+			echo -e "${yellow}/home/pi/oled_phoniebox/scripts/gpio-buttons/gpio-buttons.py${nocolor}"
+			echo -e ""
             break
             ;;
-        "Option 3: Skip")
+        "Option 2: Skip")
 			break
             ;;
         *) echo -e "Invalid option $REPLY";;
@@ -460,7 +462,7 @@ echo -e "///   ${green} ╚═════╝ ╚═════╝ ╚═╝   
 echo -e "///                                                                                                   ///"
 echo -e "/////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e ""
-echo -e "If this is a new installation, a reboot is required..."
+echo -e "If this is a fresh installation, a reboot is required..."
 echo -e ""
 echo -e "Do you want to reboot now?"
 echo -e " "
